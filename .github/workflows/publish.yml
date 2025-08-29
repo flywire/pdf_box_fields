@@ -1,5 +1,4 @@
 name: Publish Python Package
-
 on:
   push:
     tags:
@@ -9,6 +8,12 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+
+    permissions:
+      contents: read          # (optional, safer to limit to 'read' if not writing content)
+      packages: write         # needed for package publishing
+      id-token: write         # needed to get OIDC token
+
     steps:
       - uses: actions/checkout@v3
       - name: Set up Python
