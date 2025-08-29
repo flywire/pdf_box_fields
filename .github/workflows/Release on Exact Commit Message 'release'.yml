@@ -13,7 +13,7 @@ permissions:
 
 jobs:
   release:
-    if: eq(github.event.head_commit.message, 'Release')  # Case specific
+    if: github.event.head_commit.message == 'Release'  # Case specific
     runs-on: ubuntu-latest
 
     steps:
@@ -68,4 +68,4 @@ jobs:
         tag_name: v${{ steps.version.outputs.version }}
         name: Release v${{ steps.version.outputs.version }}
         body: |
-          Automated release triggered by commit with message 'release'.
+          Automated release triggered by commit with message 'Release'.
